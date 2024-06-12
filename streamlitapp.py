@@ -6,6 +6,7 @@ import requests
 import os
 import tensorflow as tf
 import tensorflow_hub as hub
+from streamlit_webrtc import webrtc_streamer
 
 # Function to download video from URL
 def download_video(url, output_path):
@@ -172,7 +173,8 @@ def main():
     # Release the webcam capture when done
     if capture is not None:
         capture.release()
-
+    st.title("Computer Vision Streamlit application")
+    webrtc_streamer(key="demo") 
 if __name__ == "__main__":
     # Initialize webcam capture
     capture = None
