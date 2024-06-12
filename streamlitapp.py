@@ -7,7 +7,6 @@ import os
 import tensorflow as tf
 import tensorflow_hub as hub
 
-
 # Function to download video from URL
 def download_video(url, output_path):
     r = requests.get(url, stream=True)
@@ -143,7 +142,7 @@ def main():
     st.title("Hand Gesture Recognition App")
     
     # Download the video from URL
-    video_url = "https://drive.google.com/uc?id=1QJS0yZMu8zNGRyJr_jDUuIW1WT4kpZBM"
+    #video_url = "https://drive.google.com/uc?id=1QJS0yZMu8zNGRyJr_jDUuIW1WT4kpZBM"
     video_path = "temp_video.mp4"
     download_video(video_url, video_path)
     
