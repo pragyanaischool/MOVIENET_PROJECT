@@ -178,16 +178,20 @@ def main():
     #st.title("Computer Vision Streamlit application")
     #webrtc_streamer(key="demo", video_processor_factory=VideoTransformer) 
 
-    image = camera_input_live()
-
-    st.image(image)
+    image = camera_input_live(debounce=10)
+    if image is not None: 
+        st.image(image)
+        processed_frame = recognize_gesture(image)
+        st.image(processed_frame, channels="BGR")
+    
     picture = st.camera_input("Take a picture", key ="firstCamera", disabled =False, label_visibility="hidden")
-
     if picture:
         st.image(picture)
+        processed_frame = recognize_gesture(picture)
+        st.image(processed_frame, channels="BGR")
         
     # Toggle webcam based on checkbox state
-    toggle_webcam(2)
+    #toggle_webcam(2)
     
     # Main loop to process webcam feed
     while st.session_state.is_webcam_enabled:
