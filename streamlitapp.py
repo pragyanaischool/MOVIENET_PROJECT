@@ -180,7 +180,7 @@ def main():
 
     image = camera_input_live()
 
-    st.image(value)
+    st.image(image)
     picture = st.camera_input("Take a picture", key ="firstCamera", disabled =False, label_visibility="hidden")
 
     if picture:
