@@ -16,11 +16,11 @@ def download_video(url, output_path):
                 f.write(chunk)
 
 # Function to enable/disable webcam
-def toggle_webcam():
+def toggle_webcam(index):
     global capture
     try:
         if st.session_state.is_webcam_enabled:
-            camera_index = 0  # Replace with the index you found
+            camera_index = index  # Replace with the index you found
             capture = cv2.VideoCapture(camera_index)
         else:
             if capture is not None:
@@ -142,10 +142,11 @@ def main():
     st.title("Hand Gesture Recognition App")
     
     # Download the video from URL
-    #video_url = "https://drive.google.com/uc?id=1QJS0yZMu8zNGRyJr_jDUuIW1WT4kpZBM"
+    video_url = "https://drive.google.com/uc?id=1QJS0yZMu8zNGRyJr_jDUuIW1WT4kpZBM"
     video_path = "temp_video.mp4"
-    download_video(video_url, video_path)
     
+    download_video(video_url, video_path)
+    video_path ="0001-0060.mp4"
     # Display the video
     st.video(video_path)
     
@@ -154,7 +155,7 @@ def main():
     st.session_state.is_webcam_enabled = st.sidebar.checkbox("Enable Webcam", False, key="webcam_checkbox")
     
     # Toggle webcam based on checkbox state
-    toggle_webcam()
+    toggle_webcam(2)
     
     # Main loop to process webcam feed
     while st.session_state.is_webcam_enabled:
