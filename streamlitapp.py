@@ -188,7 +188,7 @@ def main():
     if capture is not None:
         capture.release()
     st.title("Computer Vision Streamlit application")
-    webrtc_streamer(key="demo", video_processor_factory=transform) 
+    webrtc_streamer(key="demo", video_processor_factory=VideoTransformer) 
 if __name__ == "__main__":
     # Initialize webcam capture
     capture = None
