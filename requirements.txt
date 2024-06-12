@@ -8,3 +8,4 @@ tensorrt
 streamlit_webrtc
 opencv-python
 av
+streamlit-camera-input-live
