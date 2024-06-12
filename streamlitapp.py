@@ -7,8 +7,18 @@ import os
 import av
 import tensorflow as tf
 import tensorflow_hub as hub
-from streamlit_webrtc import webrtc_streamer
+from streamlit_webrtc import webrtc_streamer,VideoTransformerBase
 
+class VideoTransformer(VideoTransformerBase):
+    def __init__(self):
+        self.threshold1 = 100
+        self.threshold2 = 200
+
+    def transform(self, frame):
+        img = frame.to_ndarray(format="bgr24")
+        image = cv2.cvtColor(cv2.Canny(img, 100, 200), cv2.COLOR_GRAY2BGR)
+        return av.VideoFrame.from_ndarray(image, format="bgr24")
+    
 # Function to download video from URL
 def download_video(url, output_path):
     r = requests.get(url, stream=True)
@@ -178,7 +188,7 @@ def main():
     if capture is not None:
         capture.release()
     st.title("Computer Vision Streamlit application")
-    webrtc_streamer(key="demo", video_processor_factory=Web_RTC_Video) 
+    webrtc_streamer(key="demo", video_processor_factory=transform) 
 if __name__ == "__main__":
     # Initialize webcam capture
     capture = None
