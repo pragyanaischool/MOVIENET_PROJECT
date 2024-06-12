@@ -4,6 +4,7 @@ import numpy as np
 import tempfile
 import requests
 import os
+import av
 import tensorflow as tf
 import tensorflow_hub as hub
 from streamlit_webrtc import webrtc_streamer
