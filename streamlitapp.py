@@ -162,10 +162,10 @@ def main():
     st.title("Hand Gesture Recognition App")
     
     # Download the video from URL
-    video_url = "https://drive.google.com/uc?id=1QJS0yZMu8zNGRyJr_jDUuIW1WT4kpZBM"
-    video_path = "temp_video.mp4"
+    #video_url = "https://drive.google.com/uc?id=1QJS0yZMu8zNGRyJr_jDUuIW1WT4kpZBM"
+    #video_path = "temp_video.mp4"
     
-    download_video(video_url, video_path)
+    #download_video(video_url, video_path)
     video_path ="0001-0060.mp4"
     # Display the video
     st.video(video_path)
@@ -178,11 +178,11 @@ def main():
     #st.title("Computer Vision Streamlit application")
     #webrtc_streamer(key="demo", video_processor_factory=VideoTransformer) 
 
-    image = camera_input_live(debounce=10)
+    image = camera_input_live(debounce=100)
     if image is not None: 
         st.image(image)
-        processed_frame = recognize_gesture(image)
-        st.image(processed_frame, channels="BGR")
+    processed_frame = recognize_gesture(image)
+    st.image(processed_frame, channels="BGR")
     
     picture = st.camera_input("Take a picture", key ="firstCamera", disabled =False, label_visibility="hidden")
     if picture:
