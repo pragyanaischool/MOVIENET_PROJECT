@@ -23,7 +23,7 @@ def toggle_webcam(index):
             FRAME_WINDOW = st.image([])
             camera_index = 0  # Replace with the index you found
             capture = cv2.VideoCapture(camera_index)
-            _, frame = camera.read()
+            _, frame = capture.read()
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             FRAME_WINDOW.image(frame)
         else:
