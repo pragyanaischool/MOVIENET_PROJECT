@@ -51,8 +51,8 @@ def Web_RTC_Video(frame):
 # Function to perform hand gesture recognition
 def recognize_gesture(frame):
     # Initialize the TFLite interpreter
-    interpreter = tf.lite.Interpreter(model_path="model.tflite")
-    interpreter.allocate_tensors()
+    #interpreter = tf.lite.Interpreter(model_path="model.tflite")
+    #interpreter.allocate_tensors()
     movenet = hub.load("https://tfhub.dev/google/movenet/singlepose/lightning/4")
     # Define the mapping of keypoints to hand parts
     keypoint_names = ['zero', 'one', 'two', 'three', 'four', 'five', 'open_hand', 'close_hand', 'thumb', 'index',
@@ -186,7 +186,8 @@ def main():
         st.image(image)
     processed_frame = recognize_gesture(image)
     st.image(processed_frame, channels="BGR")
-    
+    points = detect_pose_sequence(video_path)
+    #frame = visualize_and_create_pose_sequence()
     picture = st.camera_input("Take a picture", key ="firstCamera", disabled =False, label_visibility="hidden")
     if picture:
         st.image(picture)
