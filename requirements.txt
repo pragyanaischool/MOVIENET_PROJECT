@@ -7,3 +7,4 @@ wheel
 tensorrt
 streamlit_webrtc
 opencv-python
+av
