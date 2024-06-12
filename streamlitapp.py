@@ -8,6 +8,7 @@ import av
 import tensorflow as tf
 import tensorflow_hub as hub
 from streamlit_webrtc import webrtc_streamer,VideoTransformerBase
+from camera_input_live import camera_input_live
 
 class VideoTransformer(VideoTransformerBase):
     def __init__(self):
@@ -177,6 +178,9 @@ def main():
     #st.title("Computer Vision Streamlit application")
     #webrtc_streamer(key="demo", video_processor_factory=VideoTransformer) 
 
+    image = camera_input_live()
+
+    st.image(value)
     picture = st.camera_input("Take a picture", key ="firstCamera", disabled =False, label_visibility="hidden")
 
     if picture:
