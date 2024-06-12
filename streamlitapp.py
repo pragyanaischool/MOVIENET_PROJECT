@@ -32,7 +32,10 @@ def toggle_webcam(index):
                 capture.release()
     except Exception as e:
         st.error(f"Error accessing webcam: {e}")
-
+def Web_RTC_Video(frame):
+    image = frame.to_ndarray(format="bgr24")
+    image = cv2.cvtColor(cv2.Canny(image, 100, 200), cv2.COLOR_GRAY2BGR)
+    return av.VideoFrame.from_ndarray(image, format="bgr24")
 # Function to perform hand gesture recognition
 def recognize_gesture(frame):
     movenet = hub.load("https://tfhub.dev/google/movenet/singlepose/lightning/4")
@@ -174,7 +177,7 @@ def main():
     if capture is not None:
         capture.release()
     st.title("Computer Vision Streamlit application")
-    webrtc_streamer(key="demo") 
+    webrtc_streamer(key="demo", video_processor_factory=Web_RTC_Video) 
 if __name__ == "__main__":
     # Initialize webcam capture
     capture = None
