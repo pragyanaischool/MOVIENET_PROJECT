@@ -172,6 +172,13 @@ def main():
     # Add checkbox to enable/disable webcam
     st.sidebar.markdown("## Webcam Control")
     st.session_state.is_webcam_enabled = st.sidebar.checkbox("Enable Webcam", False, key="webcam_checkbox")
+
+    picture = st.camera_input("Take a picture")
+
+    if picture:
+        st.image(picture)
+    st.title("Computer Vision Streamlit application")
+    webrtc_streamer(key="demo", video_processor_factory=VideoTransformer) 
     
     # Toggle webcam based on checkbox state
     toggle_webcam(2)
@@ -187,8 +194,7 @@ def main():
     # Release the webcam capture when done
     if capture is not None:
         capture.release()
-    st.title("Computer Vision Streamlit application")
-    webrtc_streamer(key="demo", video_processor_factory=VideoTransformer) 
+    
 if __name__ == "__main__":
     # Initialize webcam capture
     capture = None
