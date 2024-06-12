@@ -177,7 +177,7 @@ def main():
     st.title("Computer Vision Streamlit application")
     webrtc_streamer(key="demo", video_processor_factory=VideoTransformer) 
 
-    picture = st.camera_input("Take a picture", key ="secondcamera", disabled =False)
+    picture = st.camera_input("Take a picture", key ="firstCamera", disabled =False, label_visibility="hidden")
 
     if picture:
         st.image(picture)
