@@ -174,8 +174,8 @@ def main():
     st.session_state.is_webcam_enabled = st.sidebar.checkbox("Enable Webcam", False, key="webcam_checkbox")
 
     
-    st.title("Computer Vision Streamlit application")
-    webrtc_streamer(key="demo", video_processor_factory=VideoTransformer) 
+    #st.title("Computer Vision Streamlit application")
+    #webrtc_streamer(key="demo", video_processor_factory=VideoTransformer) 
 
     picture = st.camera_input("Take a picture", key ="firstCamera", disabled =False, label_visibility="hidden")
 
