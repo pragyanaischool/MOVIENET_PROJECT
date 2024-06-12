@@ -21,7 +21,7 @@ def toggle_webcam(index):
     try:
         if st.session_state.is_webcam_enabled:
             FRAME_WINDOW = st.image([])
-            camera_index = 0  # Replace with the index you found
+            camera_index = -1  # Replace with the index you found
             capture = cv2.VideoCapture(camera_index)
             _, frame = capture.read()
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
